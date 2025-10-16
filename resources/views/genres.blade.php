@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genres Book</title>
+    <title>Genre Buku</title>
 </head>
 <body>
     <h1>Daftar Genre Buku</h1>
-    <p>Silahkan Memilih Sesuai keinginanmu</p>
-   
-        @foreach($genres as $item) 
+
+     @foreach ($genres as $genre)
         <ul>
-            <li>{{$item['id'] }}</li>
-            <li>{{$item['name'] }}</li>
-            <li>{{$item['books'] }}</li>
+            <li>{{$genre ['name'] }}</li>
+            <li>{{$genre ['description'] }}</li>
         </ul>
-        @endforeach
-    
+     @endforeach
+
 </body>
 </html>

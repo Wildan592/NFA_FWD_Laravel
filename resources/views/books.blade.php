@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selamat Datangt</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
-    <h1>Hello World!</h1>
-    <p>Selamat Datang di Books-sales</p>
-
-    @foreach ($books as $item)
+    <h1>Daftar Buku</h1>
     <ul>
-        <li>{{$item['title'] }}</li>
-        <li>{{$item['description'] }}</li>
-        <li>{{$item['price'] }}</li>
-        <li>{{$item['stock'] }}</li>
+        @foreach ($books as $book)
+            <li>
+                <strong>{{ $book->title }}</strong> — {{ $book->genre }}
+                <br>Harga: Rp{{ number_format($book->price, 0, ',', '.') }}
+            </li>
+        @endforeach
     </ul>
-    @endforeach
-    
+
 </body>
 </html>

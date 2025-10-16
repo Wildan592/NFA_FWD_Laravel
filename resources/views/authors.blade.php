@@ -1,22 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Author</title>
+    <title>Daftar Penulis</title>
 </head>
 <body>
-
-    <h1>Daftar Author</h1>
-    <p>Berikut Penulis buku buku</p>
-    
-        @foreach($authors as $author)
-        <ul>
-            <li>{{ $author['id'] }}</li> 
-            <li>{{ $author['name'] }}</li>
-        </ul>
+    <h1>Daftar Penulis</h1>
+    <ul>
+        @foreach ($authors as $author)
+            <li>
+                <strong>{{ $author->name }}</strong>  {{ $author->email }}
+            </li>
         @endforeach
-    
-    
+    </ul>
 </body>
 </html>
