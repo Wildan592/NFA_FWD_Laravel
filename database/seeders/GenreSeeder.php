@@ -15,17 +15,27 @@ class GenreSeeder extends Seeder
     {
         Genre::create([
             'name' => 'Action',
-            'description' => 'Buku yang menceritakan adegan aksi'
+            'description' => 'Buku yang menceritakan adegan aksi dan petualangan seru'
         ]);
 
         Genre::create([
             'name' => 'Romance',
-            'description' => 'Genre yang menceritakan tentang cinta'
+            'description' => 'Genre yang berfokus pada kisah cinta dan emosi antar tokoh'
         ]);
 
         Genre::create([
             'name' => 'Fantasy',
-            'description' => 'Genre yang mengeksplorasi imajinasi dan dunia tak nyata'
+            'description' => 'Cerita yang menampilkan dunia imajinatif penuh sihir dan makhluk mistis'
+        ]);
+
+        Genre::create([
+            'name' => 'Thriller',
+            'description' => 'Genre penuh ketegangan dan kejutan dalam alur cerita'
+        ]);
+
+        Genre::create([
+            'name' => 'Comedy',
+            'description' => 'Genre dengan unsur humor dan hiburan ringan'
         ]);
     }
 }
