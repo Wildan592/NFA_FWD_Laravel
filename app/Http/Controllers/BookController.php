@@ -29,22 +29,22 @@ class BookController extends Controller
 
     public function store(Request $request){
         // 1. Validator
-        $validator = Validator::make($request->all(),[
-            'title' => 'required|string|max: 100',
-            'description' =>'required|string',
-            'price' => 'required|numirec',
-            'stock' => 'required|integer',
-            'cover_photo' => 'required|image|mimes:jpeg,jpg,png|max:2048',
-            'genre_id' => 'required|exists:genres,id',
-            'author_id' => 'required|exists:authors,id'
+        $validator = Validator::make($request->all(), [
+        'title' => 'required|string|max:100',
+        'description' => 'required|string',
+        'price' => 'required|numeric',
+        'stock' => 'required|integer',
+        'cover_photo' => 'required|image|mimes:jpeg,jpg,png|max:2048',
+        'genre_id' => 'required|exists:genres,id',
+        'author_id' => 'required|exists:authors,id'
         ]);
 
         // 2. Check Validator Eror
-        if ($validator->falls()) {
-            return response()->json([
-                'success' => false,
-                'message' => $validator->errors()
-            ], 422);
+        if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => $validator->errors()
+        ], 422);
         }
 
         // 3. Upload Image
