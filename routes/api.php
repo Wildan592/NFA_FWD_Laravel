@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,20 +15,25 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('jwt.auth'
 
 //books
 Route::apiResource('/books', BookController::class)->only(['index', 'show']);
-Route::middleware(['jwt.auth', 'role:admin'])->group(function () {
-    Route::apiResource('/books', BookController::class)->only(['store', 'update', 'destroy']);
-});
 
 // authors
 Route::apiResource('/authors', AuthorController::class)->only(['index', 'show']);
-Route::middleware(['jwt.auth', 'role:admin'])->group(function () {
-    Route::apiResource('/authors', AuthorController::class)->only(['store', 'update', 'destroy']);
-});
 
 //genres
 Route::apiResource('/genres', GenreController::class)->only(['index', 'show']);
-Route::middleware(['jwt.auth', 'role:admin'])->group(function () {
+
+Route::middleware(['jwt.auth',]) ->group(function(){
+
     Route::apiResource('/genres', GenreController::class)->only(['store', 'update', 'destroy']);
+    Route::apiResource('/authors', AuthorController::class)->only(['store', 'update', 'destroy']);
+
+    Route::apiResource('/transactions', TransactionController::class) ->only(['index', 'store', 'show']);
+
+    Route::middleware(['jwt.auth', 'role:admin'])->group(function () {
+        Route::apiResource('/books', BookController::class)->only(['store', 'update', 'destroy']);
+        Route::apiResource('/transactions', TransactionController::class) ->only(['update', 'destroy']);
+    });
+
 });
 
 

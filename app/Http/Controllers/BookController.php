@@ -13,7 +13,7 @@ class BookController extends Controller
     {
         $books = Book::all();
 
-        if($books->Empty()){
+        if($books->isEmpty()){
             return response()->json([
                 "succes" => true,
                 "message" => "Resource data not found!"
